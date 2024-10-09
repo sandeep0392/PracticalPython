@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <form action="/add" method="post">
+      <label for="task">Task:</label>
+      <input type="text" id="task" name="task" required />
+      <button type="submit">Add</button>
+    </form>
+
+    <ul style="display: flex; align-items: left; flex-direction: column">
+        {% for task in tasks %}
+        <li>
+          <label for="task-{{ index }}">{{ task }}</label>
+          <button type="button"><a href="/delete/{{ tasks.index(task) }}">Delete</a></button>
+          <button type="button"><a href="/edit/{{ tasks.index(task) }}">Edit</a></button>
+        </li>
+        {% endfor %}
+      <!-- {% for task in tasks %}
+      <li>
+        <label for="task-{{ index }}">{{ task }}</label>
+        <button type="button"><a href="/delete/{{ index }}">Delete</a></button>
+      </li>
+      {% endfor %} -->
+    </ul>
+  </body>
+</html>
